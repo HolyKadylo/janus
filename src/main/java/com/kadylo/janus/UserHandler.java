@@ -20,7 +20,7 @@ public class UserHandler extends HttpServlet{
 	
 	
 	public static void main (String[] args){
-		System.out.println("UserHandler started");...
+		System.out.println("UserHandler started");
 	}
 	
 	// gets are sent from user with instruction
