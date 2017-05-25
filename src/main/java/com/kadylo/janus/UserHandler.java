@@ -34,6 +34,11 @@ public class UserHandler extends HttpServlet{
 		
 		// getting instruction from user
 		instruction = request.getParameter("i");
+		Shuttle.access().setRequested(true);
+		Shuttle.access().setRequest(instruction);
+		
+		// waiting for response
+		...
 		
 		out.println(instruction);
 		System.out.println(", sent instruction " + instruction);
