@@ -1,10 +1,14 @@
 package com.kadylo.janus;
+//TODO import
 
 public class Shuttle{
 	
 	private String request;
 	private String responce;
 	private boolean requested;
+    
+    private Thread pollerGate;
+    private Thread userGate;
 	
 	// Singleton
 	private Shuttle(){
