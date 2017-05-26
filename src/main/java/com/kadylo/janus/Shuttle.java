@@ -5,7 +5,7 @@ public class Shuttle{
 	
 	private String request;
 	private String responce;
-	private boolean requested;
+	private boolean awaitingResponce;
     
     private Thread pollerGate;
     private Thread userGate;
@@ -30,8 +30,16 @@ public class Shuttle{
 		return responce;
 	}
 	
-	public boolean getRequested(){
-		return requested;
+	public boolean getAwaitingResponce(){
+		return awaitingResponce;
+	}
+	
+	public Thread getPollerGate(){
+		return pollerGate;
+	}
+	
+	public Thread getUserGate(){
+		return userGate;
 	}
 	
 	// setters
@@ -43,8 +51,16 @@ public class Shuttle{
 		this.responce = responce;
 	}
 	
-	public void setRequested(boolean requested){
-		this.requested = requested;
+	public void setAwaitingResponce(boolean awaitingResponce){
+		this.awaitingResponce = awaitingResponce;
+	}
+	
+	public void setPollerGate(Thread pollerGate){
+		this.pollerGate = pollerGate;
+	}
+	
+	public void setUserGate(Thread userGate){
+		this.userGate = userGate;
 	}
 	
 }
