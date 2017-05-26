@@ -9,14 +9,12 @@ public class PollerAnswerer extends HttpServlet{
 	private static volatile String instruction = null;
 	private static volatile String Answer = null;
 	
-	/* public String getAnswer(){
+	//constructor
+	public PollerAnswerer(){
 		
-		return Answer;
+		// setting gate
+		Shuttle.access().setPollerGate(Thread.currentThread());
 	}
-	
-	public setInstruction(String instruction){
-		this.instruction = instruction;
-	} */
 	
 	
 	public static void main (String[] args){

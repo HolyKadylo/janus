@@ -9,15 +9,12 @@ public class UserHandler extends HttpServlet{
 	private static volatile String instruction = null;
 	private static volatile String Answer = null;
 	
-	/* public String getAnswer(){
+	//constructor
+	public UserHandler(){
 		
-		return Answer;
+		// setting gate
+		Shuttle.access().setUserGate(Thread.currentThread());
 	}
-	
-	public setInstruction(String instruction){
-		this.instruction = instruction;
-	} */
-	
 	
 	public static void main (String[] args){
 		System.out.println("UserHandler started");
@@ -34,11 +31,12 @@ public class UserHandler extends HttpServlet{
 		
 		// getting instruction from user
 		instruction = request.getParameter("i");
-		Shuttle.access().setRequested(true);
+		
+		Shuttle.access().setAwaitingResponce(true);
 		Shuttle.access().setRequest(instruction);
 		
 		// waiting for response
-		...
+		
 		
 		out.println(instruction);
 		System.out.println(", sent instruction " + instruction);

@@ -5,19 +5,31 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 	<description>
-	This is a web application, that is used to maintain filecrypt's
-	folder always online.
+	This is a web application, that is used to send commands and receive answers from home Linux driven PC
 	</description>
 	
 	<servlet>
-        <servlet-name>StartServlet</servlet-name>
-        <servlet-class>com.kadylo.updater.Starter</servlet-class>
-		<description>This servlet starts the whole process</description>
+        <servlet-name>PollerAnswerer</servlet-name>
+        <servlet-class>com.kadylo.janus.PollerAnswerer</servlet-class>
+		<description>This servlet answers to the PC's poller requests</description>
     </servlet>
-
+	
+	<servlet>
+        <servlet-name>UserHandler</servlet-name>
+        <servlet-class>com.kadylo.janus.UserHandler</servlet-class>
+		<description>This servlet answers to user's requests</description>
+    </servlet>
+	
     <servlet-mapping>
-        <servlet-name>StartServlet</servlet-name>
-        <url-pattern>/start</url-pattern>
+        <servlet-name>PollerAnswerer</servlet-name>
+		<!--has to be secret path on which it polls-->
+        <url-pattern>/poihe9829bUE730JSShhe3kk3</url-pattern>
+    </servlet-mapping>
+	
+	 <servlet-mapping>
+        <servlet-name>UserHandler</servlet-name>
+		<!--has to be secret path but now it's simple-->
+        <url-pattern>/k</url-pattern>
     </servlet-mapping>
 	
 </web-app>
