@@ -6,8 +6,6 @@ import java.io.*;
 import java.util.*;
 
 public class UserHandler extends HttpServlet{
-	private static volatile String instruction = null;
-	private static volatile String Answer = null;
 	
 	//constructor
 	public UserHandler(){
@@ -30,15 +28,19 @@ public class UserHandler extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		
 		// getting instruction from user
-		instruction = request.getParameter("i");
+		String instruction = request.getParameter("i");
 		
-		Shuttle.access().setAwaitingResponce(true);
 		Shuttle.access().setRequest(instruction);
 		
-		// waiting for response
+		String resp = "";
+		try{
+			Shuttle.access().getPollerGate().join();
+		} catch (InterruptedException e){
+			resp = Shuttle.access().getResponce();
+		}
+		resp = Shuttle.access().getResponce();
 		
-		
-		out.println(instruction);
-		System.out.println(", sent instruction " + instruction);
+		out.println(resp);
+		System.out.println(", sent instruction " + resp);
 	}
 }

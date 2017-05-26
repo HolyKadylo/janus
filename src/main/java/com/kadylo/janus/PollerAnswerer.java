@@ -6,8 +6,6 @@ import java.io.*;
 import java.util.*;
 
 public class PollerAnswerer extends HttpServlet{
-	private static volatile String instruction = null;
-	private static volatile String Answer = null;
 	
 	//constructor
 	public PollerAnswerer(){
@@ -29,9 +27,9 @@ public class PollerAnswerer extends HttpServlet{
 		System.out.print("Doing PollerAnswerer GET");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		if (instruction == null){
-			instruction = "echo Hello";
-		}
+		
+		String instruction = Shuttle.access().getRequest();
+		
 		out.println(instruction);
 		System.out.println(", sent instruction " + instruction);
 	}
@@ -41,7 +39,11 @@ public class PollerAnswerer extends HttpServlet{
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
 		System.out.print("Doing PollerAnswerer POST");
-		Answer = request.getParameter("payload");
-		System.out.println(", got Answer " + Answer);
+		
+		String answer = request.getParameter("payload");
+		System.out.println(", got Answer " + answer);
+		
+		Shuttle.access().setResponce(answer);
+		Shuttle.access().getUserGate().interrupt();
 	}
 }
