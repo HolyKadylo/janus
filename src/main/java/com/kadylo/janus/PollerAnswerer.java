@@ -11,12 +11,8 @@ public class PollerAnswerer extends HttpServlet{
 	public PollerAnswerer(){
 		
 		// setting gate
+		System.out.println("-->Constructing PollerAnswerer");
 		Shuttle.access().setPollerGate(Thread.currentThread());
-	}
-	
-	
-	public static void main (String[] args){
-		System.out.println("PollerAnswerer started");
 	}
 	
 	// gets are sent from PC
@@ -24,7 +20,7 @@ public class PollerAnswerer extends HttpServlet{
 	// ..........................
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException  {
-		System.out.print("Doing PollerAnswerer GET");
+		System.out.print("-->Doing PollerAnswerer GET");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
@@ -38,7 +34,7 @@ public class PollerAnswerer extends HttpServlet{
 	// . .       .      .      .
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
-		System.out.print("Doing PollerAnswerer POST");
+		System.out.print("-->Doing PollerAnswerer POST");
 		
 		String answer = request.getParameter("payload");
 		System.out.println(", got Answer " + answer);

@@ -11,6 +11,7 @@ public class Shuttle{
 	
 	// Singleton
 	private Shuttle(){
+		System.out.println("-->Constructing Shuttle");
 		setRequest("echo HelloWorld");
 		setResponce("dummyResp");
 	}

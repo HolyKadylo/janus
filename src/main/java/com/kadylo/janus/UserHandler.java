@@ -11,11 +11,8 @@ public class UserHandler extends HttpServlet{
 	public UserHandler(){
 		
 		// setting gate
+		System.out.println("-->Constructing UserHandler");
 		Shuttle.access().setUserGate(Thread.currentThread());
-	}
-	
-	public static void main (String[] args){
-		System.out.println("UserHandler started");
 	}
 	
 	// gets are sent from user with instruction
@@ -23,7 +20,7 @@ public class UserHandler extends HttpServlet{
 	// ..........................
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException  {
-		System.out.print("Doing UserHandler GET");
+		System.out.print("-->Doing UserHandler GET");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
