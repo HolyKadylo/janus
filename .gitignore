@@ -1,5 +1,10 @@
 *.class
 
+# unremoved working files
+instructions.sh
+answer
+resp
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
