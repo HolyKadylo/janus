@@ -27,6 +27,7 @@ public class UserHandler extends HttpServlet{
 		// getting instruction from user
 		String instruction = request.getParameter("i");
 		
+		Shuttle.access().setUserGate(Thread.currentThread());
 		Shuttle.access().setRequest(instruction);
 		
 		String resp = "";
@@ -35,9 +36,8 @@ public class UserHandler extends HttpServlet{
 		} catch (InterruptedException e){
 			resp = Shuttle.access().getResponce();
 		}
-		resp = Shuttle.access().getResponce();
 		
 		out.println(resp);
-		System.out.println("-->Sent instruction " + resp);
+		System.out.println("-->Sent answer: " + resp);
 	}
 }
