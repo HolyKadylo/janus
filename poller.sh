@@ -1,5 +1,5 @@
 prevInstr="no way this would be repeated as the instruction"
-add < pollerGateAddress
+add="yourSecret.app.com/yourSecretContext"
 pollingIter=0
 exeIter=0
 while true
