@@ -18,11 +18,12 @@ do
 		echo $prevInstr >> LOG.log 
 		chmod +x instructions.sh
 		./instructions.sh > answer
-		value=`cat answer`
+		sed ':a;N;$!ba;s/\n/ ENTER s/g' answer > answer2
+		value=`cat answer2`		
 		echo $value >> LOG.log
-		curl --data "payload=$value" $add >> LOG.log
+		curl --data-binary "payload=$value" $add >> LOG.log
 		echo " " >> LOG.log
-		rm answer; rm instructions.sh
+		rm answer; rm instructions.sh; rm answer2
 	fi
 	echo "."; echo "."; echo "."
 	sleep $period
