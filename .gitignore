@@ -5,6 +5,9 @@ instructions.sh
 answer
 resp
 
+# generated logs
+*.log
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
