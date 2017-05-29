@@ -22,7 +22,7 @@ public class UserHandler extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException  {
 		System.out.println("-->Doing UserHandler GET");
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		ServletOutputStream out = response.getOutputStream();
 		
 		// getting instruction from user
 		String instruction = request.getParameter("i");
@@ -37,7 +37,14 @@ public class UserHandler extends HttpServlet{
 			resp = Shuttle.access().getResponce();
 		}
 		
-		out.println(resp);
-		System.out.println("-->Sent answer: " + resp);
+		String writing = "";
+		String[] parts = resp.split("\r\n");
+		out.println("<!DOCTYPE html><html><head><title>" + instruction + "</title></head><body>");
+		for (String s : parts){
+			out.println(s + "<br>");
+		}
+		out.println("</body></html>");
+		out.close();
+		System.out.println("-->Answer sent");
 	}
 }
