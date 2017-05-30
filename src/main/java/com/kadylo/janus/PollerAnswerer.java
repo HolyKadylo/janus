@@ -40,6 +40,10 @@ public class PollerAnswerer extends HttpServlet{
 		System.out.println("-->Got Answer " + answer);
 		
 		Shuttle.access().setResponce(answer);
-		Shuttle.access().getUserGate().interrupt();
+		try{
+			Shuttle.access().getUserGate().interrupt();
+		} catch (NullPointerException npe){
+			System.out.println("-->Initial doPost, no userGate");
+		}
 	}
 }
